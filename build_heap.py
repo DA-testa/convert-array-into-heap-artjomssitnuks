@@ -20,7 +20,7 @@ def build_heap(data):
 
 
 def main():
-    input_opt, n = input()
+    input_opt, n = input().strip()
     n = int(n)
     
     data = list(map(int, input().split()))
