@@ -20,16 +20,18 @@ def build_heap(data):
 
 
 def main():
-    input_opt, n = input()
-    n = int(n.strip())
-    
-    data = list(map(int, input().split()))
-    assert len(data) == n
-    if input_opt == "F":
+    first_input = input()
+    if first_input.startswith("I"):
+        second_input = input()
+        n = int(second_input)
+        data = list(map(int, input().split()))
+        assert len(data) == n
+    elif first_input.startswith("F"):
         with open(input(), "r") as f:
             data = list(map(int, f.readline().split()))
         assert len(data) == n
-
+    else:
+        raise ValueError("Invalid input option")
     swaps = build_heap(data)
     print(len(swaps))
     for i, j in swaps:
