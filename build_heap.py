@@ -28,7 +28,7 @@ def main():
         assert len(data) == n
     elif first_input.startswith("F"):
         filename = str(input())
-        filename = "test/" + filename
+        filename = "tests/" + filename
         with open(filename, 'r') as f:
             n = int(f.readline())
             data = [int(x) for x in f.readline().split()]
