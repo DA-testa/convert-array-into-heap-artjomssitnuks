@@ -21,7 +21,7 @@ def build_heap(data):
 
 def main():
     input_opt, n = input()
-    n = int(n).strip()
+    n = int(n.strip())
     
     data = list(map(int, input().split()))
     assert len(data) == n
