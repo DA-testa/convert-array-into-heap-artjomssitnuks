@@ -3,36 +3,37 @@
 
 def build_heap(data):
     swaps = []
-    # TODO: Creat heap and heap sort
-    # try to achieve  O(n) and not O(n2)
-
-
+    n = len(data)
+    for i in range(n // 2 - 1, -1, -1):
+        while True:
+            max_child_idx = 2 * i + 1
+            if max_child_idx + 1 < n and data[max_child_idx + 1] > data[max_child_idx]:
+                max_child_idx += 1
+            if data[i] >= data[max_child_idx]:
+                break
+            swaps.append((i, max_child_idx))
+            data[i], data[max_child_idx] = data[max_child_idx], data[i]
+            i = max_child_idx
     return swaps
 
-
 def main():
-    
-    # TODO : add input and corresponding checks
-    # add another input for I or F 
-    # first two tests are from keyboard, third test is from a file
+    input_opt, n = input().split()
 
+    n = int(n)
 
-    # input from keyboard
-    n = int(input())
-    data = list(map(int, input().split()))
+    if input_opt == "I":
+        data = list(map(int, input().split()))
+        assert len(data) == n
+    elif input_opt == "F":
+        with open(input(), "r") as f:
+            data = list(map(int, f.readline().split()))
+        assert len(data) == n
+    else:
+        raise ValueError("Invalid input option")
 
-    # checks if lenght of data is the same as the said lenght
-    assert len(data) == n
-
-    # calls function to assess the data 
-    # and give back all swaps
     swaps = build_heap(data)
+    assert len(swaps) < 4
 
-    # TODO: output how many swaps were made, 
-    # this number should be less than 4n (less than 4*len(data))
-
-
-    # output all swaps
     print(len(swaps))
     for i, j in swaps:
         print(i, j)
