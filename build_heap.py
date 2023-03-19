@@ -29,9 +29,9 @@ def main():
     elif first_input.startswith("F"):
         filename = str(input())
         filename = "test/" + filename
-        with open(input(), "r") as f:
-            data = list(map(int, f.readline().split()))
-        assert len(data) == n
+        with open(filename, 'r') as f:
+            n = int(f.readline())
+            data = [int(x) for x in f.readline().split()]
     else:
         raise ValueError("Invalid input option")
     swaps = build_heap(data)
