@@ -17,7 +17,7 @@ def build_heap(data):
     return swaps
 
 def main():
-    input_opt, n = input().split()
+    input_opt, n = input().strip().split()
 
     n = int(n)
 
